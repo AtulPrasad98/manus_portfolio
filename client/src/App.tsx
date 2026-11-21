@@ -1,4 +1,4 @@
-import { Route, Switch } from "wouter";
+import { Route, Router as WouterRouter, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import Home from "./pages/Home";
 import NotFound from "@/pages/NotFound";
@@ -13,9 +13,13 @@ function Router() {
 }
 
 export default function App() {
+  const basePath = import.meta.env.BASE_URL.replace(/\/$/, "");
+
   return (
     <ErrorBoundary>
-      <Router />
+      <WouterRouter base={basePath}>
+        <Router />
+      </WouterRouter>
     </ErrorBoundary>
   );
 }

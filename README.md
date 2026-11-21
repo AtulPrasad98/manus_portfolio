@@ -28,6 +28,12 @@ pnpm build:static
 
 The output is `dist/public/`; serve that directory from the site origin. It includes the local artwork, favicon, route manifest, and page files. The portfolio's content and contact links are client-side. A static deployment does not provide the optional Express/tRPC APIs.
 
+## GitHub Pages deployment
+
+The repository deploys the static portfolio from `main` with the workflow in `.github/workflows/deploy-pages.yml`. The workflow installs the pinned Node.js and pnpm versions, runs the type check and tests, builds `dist/public/`, and publishes it to GitHub Pages. The project-site URL is <https://atulprasad98.github.io/manus_portfolio/>.
+
+The workflow sets `PAGES_BASE_PATH` to `/manus_portfolio/` so bundled assets and the homepage route work beneath the repository URL. If the repository name or hosting domain changes, update that value in the workflow and the canonical/social URLs in `client/index.html`. Pages hosts only the static portfolio; it does not run the optional Express/tRPC server, OAuth, database, or migrations described below.
+
 ## Optional full-stack server
 
 The repository also contains the Express/tRPC server, OAuth integration, database schema, and migration history. These server-backed integrations are designed around the Manus platform. Copy `.env.example` to `.env` only when running the optional server locally, then configure the required values from a trusted secret manager or the private environment settings of the target host. `.env*`, credential files, local logs, databases, and private-key files are excluded by `.gitignore`; never replace the blank template values with real credentials in a commit.

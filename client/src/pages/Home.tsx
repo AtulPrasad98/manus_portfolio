@@ -32,7 +32,7 @@ const projects = [
       "A CRM-style dashboard for relationship management, stakeholder engagement tracking, activity prioritisation, and pipeline visualisation.",
     tags: ["CRM", "Dashboard", "Power BI"],
     kind: "crm",
-    image: "/images/portfolio/project-crm.webp",
+    image: "images/portfolio/project-crm.webp",
     alt: "Abstract relationship map with connected contacts and data cards",
     link: null,
   },
@@ -44,7 +44,7 @@ const projects = [
       "Designed, tested, and published an end-to-end n8n workflow for automated email triage and response handling.",
     tags: ["n8n", "AI workflow", "Automation"],
     kind: "email",
-    image: "/images/portfolio/project-email.webp",
+    image: "images/portfolio/project-email.webp",
     alt: "Abstract automated email-sorting workflow with branching paths",
     link: null,
   },
@@ -111,7 +111,7 @@ const credentials = [
 
 function ProjectVisual({ kind, image, alt }: { kind: string; image: string | null; alt: string }) {
   if (image) {
-    return <img className={`project-art project-art--${kind}`} src={image} alt={alt} loading="lazy" />;
+    return <img className={`project-art project-art--${kind}`} src={`${import.meta.env.BASE_URL}${image}`} alt={alt} loading="lazy" />;
   }
 
   if (kind === "chart") {
