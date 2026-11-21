@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://atulprasad98.github.io/manus_portfolio/sitemap.xml
